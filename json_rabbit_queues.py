@@ -65,7 +65,7 @@ def get_queues():
     if response.status_code == 200:
         json_data = response.json()
         for vhost in json_data:
-            data[vhost['name']] = vhost['messages']
+            data[vhost['name'].replace('.', '_')] = vhost['messages']
         results['values']['rabbitQueues'] = data
         results['events'] = [
             {
